@@ -10,3 +10,5 @@
 # `evercrypt_tiny-sys`
 Welcome to `evercrypt_tiny-sys` 🎉
 
+This library provides a vendored copy of [EverCrypt](https://github.com/project-everest/hacl-star)'s c89-compatible
+distribution (currently v0.4.5) together with bindgen-generated bindings.
