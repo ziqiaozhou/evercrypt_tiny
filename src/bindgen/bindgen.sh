@@ -19,5 +19,5 @@ bindgen \
     --blocklist-function="Hacl_Blake2b_256_blake2b_update_multi" \
     --blocklist-function="Hacl_Blake2b_256_blake2b_update_last" \
     \
-    --output="bindgen.rs" "bindgen.h" \
+    --no-layout-tests --output="bindgen.rs" "bindgen.h" \
     -- -I"../../$DIST/c89-compatible" -I"../../$DIST/kremlin/include" -I"../../$DIST/kremlin/kremlib/dist/minimal" 
