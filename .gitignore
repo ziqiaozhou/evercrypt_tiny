@@ -4,6 +4,7 @@
 # Ignore build results
 /Cargo.lock
 /target
+/vendored/**/c89-compatible/config.h
 /vendored/**/*.d
 /vendored/**/*.o
 /vendored/**/*.a

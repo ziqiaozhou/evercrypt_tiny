@@ -5,6 +5,7 @@ set -eu
 DIST="vendored/v0.4.5-dist"
 
 # Go into script dir and call bindgen
+#  NOTE: This script requires a valid config.h, so it may be necessary to attempt a build first which creates the config.h
 cd "`dirname $0`"
 bindgen \
     \

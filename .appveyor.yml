@@ -4,12 +4,11 @@ build: false
 
 # The Rust target platforms
 platform:
-  # Currently builds require MinGW
+  # Currently builds require MinGW-64
   #- x86_64-pc-windows-msvc
   #- i686-pc-windows-msvc
   - x86_64-pc-windows-gnu
-  # Disable i686-pc-windows-gnu as CI target (it's mostly obsolete anyway)
-  #- i686-pc-windows-gnu
+  - i686-pc-windows-gnu
   - x86_64-unknown-linux-gnu
   - x86_64-apple-darwin
 
