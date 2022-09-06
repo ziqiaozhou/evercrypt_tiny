@@ -4,11 +4,12 @@
 # Ignore build results
 Cargo.lock
 target
-vendored/**/c89-compatible/config.h
-vendored/**/*.d
-vendored/**/*.o
-vendored/**/*.a
-vendored/**/*.so
+evercrypt_tiny-sys/src/bindgen/bindgen.rs
+evercrypt_tiny-sys/vendored/**/c89-compatible/config.h
+evercrypt_tiny-sys/vendored/**/*.d
+evercrypt_tiny-sys/vendored/**/*.o
+evercrypt_tiny-sys/vendored/**/*.a
+evercrypt_tiny-sys/vendored/**/*.so
 
 # Ignore template files
 vendored/*.zip
