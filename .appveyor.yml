@@ -70,6 +70,7 @@ for:
     environment:
       APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu2004
     install:
+      - apt-get install --yes clang 
       - curl https://sh.rustup.rs -sSf -o rustup-init.sh
       - sh rustup-init.sh -y --default-host "$PLATFORM"
       - source $HOME/.cargo/env
