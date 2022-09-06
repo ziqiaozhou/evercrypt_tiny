@@ -23,6 +23,7 @@ default = []
 [dependencies]
 
 [build-dependencies]
+bindgen = { version = "0.60.1", default-features = false, features = ["runtime"] }
 cc = "1.0.73"
 
 
