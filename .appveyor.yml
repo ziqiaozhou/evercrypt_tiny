@@ -10,7 +10,8 @@ platform:
   - x86_64-pc-windows-gnu
   # Disable 32 bit builds (mostly exotic anyway)
   #- i686-pc-windows-gnu
-  - x86_64-unknown-linux-gnu
+  # Disable linux build due to an horribly outdated libclang version
+  #- x86_64-unknown-linux-gnu
   - x86_64-apple-darwin
 
 
@@ -74,9 +75,8 @@ for:
       - sh rustup-init.sh -y --default-host "$PLATFORM"
       - source $HOME/.cargo/env
     test_script:
-      # Use EVERCRYPT_FAILSAFE due to outdated libclang
-      - EVERCRYPT_FAILSAFE=true cargo test --verbose --no-default-features $CONFIGURATION
-      - EVERCRYPT_FAILSAFE=true cargo test --verbose --release --no-default-features $CONFIGURATION
+      - cargo test --verbose --no-default-features $CONFIGURATION
+      - cargo test --verbose --release --no-default-features $CONFIGURATION
   
   # macOS specific build settings
   - matrix:
