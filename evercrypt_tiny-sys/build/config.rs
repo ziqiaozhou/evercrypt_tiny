@@ -35,6 +35,11 @@ pub struct Configuration {
 impl Configuration {
     /// Creates a new configuration object
     pub fn new() -> Self {
+        // Return a failsafe config
+        if env::var("EVERCRYPT_FAILSAFE").is_ok() {
+            return Self::failsafe();
+        }
+
         // Current feature detection is simply based on arch detection
         // Therefore we try to chose a reasonable base line
         let arch = env::var("CARGO_CFG_TARGET_ARCH").expect("Cannot determine target architecture");
@@ -70,5 +75,20 @@ impl Configuration {
                 panic!("Unsupported target platform {arch}")
             }
         }
+    }
+
+    /// Creates a minimal failsafe config
+    pub fn failsafe() -> Self {
+        // Determine arch
+        let arch = env::var("CARGO_CFG_TARGET_ARCH").expect("Cannot determine target architecture");
+        let arch = match arch.as_str() {
+            "arm" | "aarch64" => Arch::arm,
+            "x86" => Arch::x86,
+            "x86_64" => Arch::x86_64,
+            arch => panic!("Unsupported target platform {arch}"),
+        };
+
+        // Build config
+        Self { arch, v128: false, v256: false, vale: false, inline_asm: false, intrinsics: false, native_u128: false }
     }
 }

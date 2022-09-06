@@ -74,8 +74,9 @@ for:
       - sh rustup-init.sh -y --default-host "$PLATFORM"
       - source $HOME/.cargo/env
     test_script:
-      - cargo test --verbose --no-default-features $CONFIGURATION
-      - cargo test --verbose --release --no-default-features $CONFIGURATION
+      # Use EVERCRYPT_FAILSAFE due to outdated libclang
+      - EVERCRYPT_FAILSAFE=true cargo test --verbose --no-default-features $CONFIGURATION
+      - EVERCRYPT_FAILSAFE=true cargo test --verbose --release --no-default-features $CONFIGURATION
   
   # macOS specific build settings
   - matrix:
