@@ -2,16 +2,16 @@
 .DS_Store
 
 # Ignore build results
-/Cargo.lock
-/target
-/vendored/**/c89-compatible/config.h
-/vendored/**/*.d
-/vendored/**/*.o
-/vendored/**/*.a
-/vendored/**/*.so
+Cargo.lock
+target
+vendored/**/c89-compatible/config.h
+vendored/**/*.d
+vendored/**/*.o
+vendored/**/*.a
+vendored/**/*.so
 
 # Ignore template files
-/vendored/*.zip
+vendored/*.zip
 
 # Ignore some vscode files
 .vscode/*
