@@ -4,7 +4,6 @@
 # Ignore build results
 Cargo.lock
 target
-evercrypt_tiny-sys/src/bindgen/bindgen.rs
 evercrypt_tiny-sys/vendored/**/c89-compatible/config.h
 evercrypt_tiny-sys/vendored/**/*.d
 evercrypt_tiny-sys/vendored/**/*.o

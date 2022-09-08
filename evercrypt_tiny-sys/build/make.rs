@@ -10,7 +10,7 @@ use crate::{
         DIST_C89, DIST_KARAMEL_INCLUDE, DIST_KARAMEL_MINIMAL_INCLUDE,
     },
 };
-use std::{env, fs};
+use std::{env, fs, path::Path};
 
 /// A simplified replacement for `make`
 #[derive(Debug)]
@@ -26,8 +26,11 @@ impl Make {
 
     /// Builds the library
     pub fn build(&self) {
+        // Determine the output directory
+        let out_dir = env::var("OUT_DIR").expect("Failed to get target output directory");
+
         // Create config file
-        let config_h_path = format!("{DIST_C89}/config.h");
+        let config_h_path = Path::new(&out_dir).join("config.h");
         let config_h = self.config_h();
         fs::write(config_h_path, config_h).expect("Failed to create config.h");
 
@@ -38,6 +41,7 @@ impl Make {
 
         // Build the library
         Build::new()
+            .include(out_dir)
             .includes(includes)
             .files(c_sources.paths())
             .files(asm_sources.paths())
