@@ -813,3 +813,5 @@ EXPORTS
   EverCrypt_Curve25519_scalarmult
   EverCrypt_Curve25519_ecdh
   EverCrypt_Cipher_chacha20
+compute_iv_stdcall
+gcm128_encrypt_opt

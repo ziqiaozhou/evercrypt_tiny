@@ -67,19 +67,7 @@ Spec_Agile_AEAD_alg EverCrypt_AEAD_alg_of_state(EverCrypt_AEAD_state_s *s)
 static EverCrypt_Error_error_code
 create_in_chacha20_poly1305(EverCrypt_AEAD_state_s **dst, uint8_t *k)
 {
-  uint8_t *ek = (uint8_t *)KRML_HOST_CALLOC((uint32_t)32U, sizeof (uint8_t));
-  EverCrypt_AEAD_state_s lit;
-  lit.impl = Spec_Cipher_Expansion_Hacl_CHACHA20;
-  lit.ek = ek;
-  KRML_CHECK_SIZE(sizeof (EverCrypt_AEAD_state_s), (uint32_t)1U);
-  {
-    EverCrypt_AEAD_state_s
-    *p = (EverCrypt_AEAD_state_s *)KRML_HOST_MALLOC(sizeof (EverCrypt_AEAD_state_s));
-    p[0U] = lit;
-    memcpy(ek, k, (uint32_t)32U * sizeof (uint8_t));
-    dst[0U] = p;
-    return EverCrypt_Error_Success;
-  }
+  return EverCrypt_Error_Success;
 }
 
 static EverCrypt_Error_error_code

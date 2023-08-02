@@ -158,7 +158,8 @@ impl Make {
                     "gnu" => ("linux", "S"),
                     _ => return asm_sources,
                 },
-                _ => return asm_sources,
+                _ => ("linux", "S"),
+                //_ => return asm_sources,
             };
 
             // Gather files

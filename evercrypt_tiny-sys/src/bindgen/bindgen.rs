@@ -24,13 +24,13 @@ pub const Spec_Agile_Cipher_CHACHA20: u32 = 2;
 pub const Spec_Cipher_Expansion_Hacl_CHACHA20: u32 = 0;
 pub const Spec_Cipher_Expansion_Vale_AES128: u32 = 1;
 pub const Spec_Cipher_Expansion_Vale_AES256: u32 = 2;
-pub const Spec_Agile_AEAD_AES128_GCM: u32 = 0;
-pub const Spec_Agile_AEAD_AES256_GCM: u32 = 1;
-pub const Spec_Agile_AEAD_CHACHA20_POLY1305: u32 = 2;
-pub const Spec_Agile_AEAD_AES128_CCM: u32 = 3;
-pub const Spec_Agile_AEAD_AES256_CCM: u32 = 4;
-pub const Spec_Agile_AEAD_AES128_CCM8: u32 = 5;
-pub const Spec_Agile_AEAD_AES256_CCM8: u32 = 6;
+pub const Spec_Agile_AEAD_AES128_GCM: u8 = 0;
+pub const Spec_Agile_AEAD_AES256_GCM: u8 = 1;
+pub const Spec_Agile_AEAD_CHACHA20_POLY1305: u8 = 2;
+pub const Spec_Agile_AEAD_AES128_CCM: u8 = 3;
+pub const Spec_Agile_AEAD_AES256_CCM: u8 = 4;
+pub const Spec_Agile_AEAD_AES128_CCM8: u8 = 5;
+pub const Spec_Agile_AEAD_AES256_CCM8: u8 = 6;
 pub const Spec_Frodo_Params_SHAKE128: u32 = 0;
 pub const Spec_Frodo_Params_AES128: u32 = 1;
 pub const EverCrypt_Hash_MD5_s: u32 = 0;
@@ -51,7 +51,7 @@ pub const EverCrypt_DRBG_SHA1_s: u32 = 0;
 pub const EverCrypt_DRBG_SHA2_256_s: u32 = 1;
 pub const EverCrypt_DRBG_SHA2_384_s: u32 = 2;
 pub const EverCrypt_DRBG_SHA2_512_s: u32 = 3;
-pub type C_String_t = *const ::std::os::raw::c_char;
+pub type C_String_t = *const u8;
 pub type FStar_UInt128_uint128 = u128;
 extern "C" {
     pub static Hacl_Impl_Blake2_Constants_sigmaTable: [u32; 160usize];
@@ -224,18 +224,18 @@ extern "C" {
 extern "C" {
     pub static mut Hacl_Poly1305_256_blocklen: u32;
 }
-pub type Hacl_Poly1305_256_poly1305_ctx = *mut *mut ::std::os::raw::c_void;
+pub type Hacl_Poly1305_256_poly1305_ctx = *mut *mut ::core::ffi::c_void;
 extern "C" {
-    pub fn Hacl_Poly1305_256_poly1305_init(ctx: *mut *mut ::std::os::raw::c_void, key: *mut u8);
+    pub fn Hacl_Poly1305_256_poly1305_init(ctx: *mut *mut ::core::ffi::c_void, key: *mut u8);
 }
 extern "C" {
-    pub fn Hacl_Poly1305_256_poly1305_update1(ctx: *mut *mut ::std::os::raw::c_void, text: *mut u8);
+    pub fn Hacl_Poly1305_256_poly1305_update1(ctx: *mut *mut ::core::ffi::c_void, text: *mut u8);
 }
 extern "C" {
-    pub fn Hacl_Poly1305_256_poly1305_update(ctx: *mut *mut ::std::os::raw::c_void, len: u32, text: *mut u8);
+    pub fn Hacl_Poly1305_256_poly1305_update(ctx: *mut *mut ::core::ffi::c_void, len: u32, text: *mut u8);
 }
 extern "C" {
-    pub fn Hacl_Poly1305_256_poly1305_finish(tag: *mut u8, key: *mut u8, ctx: *mut *mut ::std::os::raw::c_void);
+    pub fn Hacl_Poly1305_256_poly1305_finish(tag: *mut u8, key: *mut u8, ctx: *mut *mut ::core::ffi::c_void);
 }
 extern "C" {
     pub fn Hacl_Poly1305_256_poly1305_mac(tag: *mut u8, len: u32, text: *mut u8, key: *mut u8);
@@ -287,18 +287,18 @@ extern "C" {
 extern "C" {
     pub static mut Hacl_Poly1305_128_blocklen: u32;
 }
-pub type Hacl_Poly1305_128_poly1305_ctx = *mut *mut ::std::os::raw::c_void;
+pub type Hacl_Poly1305_128_poly1305_ctx = *mut *mut ::core::ffi::c_void;
 extern "C" {
-    pub fn Hacl_Poly1305_128_poly1305_init(ctx: *mut *mut ::std::os::raw::c_void, key: *mut u8);
+    pub fn Hacl_Poly1305_128_poly1305_init(ctx: *mut *mut ::core::ffi::c_void, key: *mut u8);
 }
 extern "C" {
-    pub fn Hacl_Poly1305_128_poly1305_update1(ctx: *mut *mut ::std::os::raw::c_void, text: *mut u8);
+    pub fn Hacl_Poly1305_128_poly1305_update1(ctx: *mut *mut ::core::ffi::c_void, text: *mut u8);
 }
 extern "C" {
-    pub fn Hacl_Poly1305_128_poly1305_update(ctx: *mut *mut ::std::os::raw::c_void, len: u32, text: *mut u8);
+    pub fn Hacl_Poly1305_128_poly1305_update(ctx: *mut *mut ::core::ffi::c_void, len: u32, text: *mut u8);
 }
 extern "C" {
-    pub fn Hacl_Poly1305_128_poly1305_finish(tag: *mut u8, key: *mut u8, ctx: *mut *mut ::std::os::raw::c_void);
+    pub fn Hacl_Poly1305_128_poly1305_finish(tag: *mut u8, key: *mut u8, ctx: *mut *mut ::core::ffi::c_void);
 }
 extern "C" {
     pub fn Hacl_Poly1305_128_poly1305_mac(tag: *mut u8, len: u32, text: *mut u8, key: *mut u8);
@@ -398,7 +398,7 @@ extern "C" {
 extern "C" {
     pub fn EverCrypt_AutoConfig2_init();
 }
-pub type EverCrypt_AutoConfig2_disabler = ::std::option::Option<unsafe extern "C" fn()>;
+pub type EverCrypt_AutoConfig2_disabler = ::core::option::Option<unsafe extern "C" fn()>;
 extern "C" {
     pub fn EverCrypt_AutoConfig2_disable_avx2();
 }
@@ -1022,12 +1022,12 @@ extern "C" {
     pub fn Hacl_Streaming_Blake2_blake2b_32_no_key_free(s1: *mut Hacl_Streaming_Blake2_blake2b_32_state);
 }
 extern "C" {
-    pub fn Hacl_Blake2s_128_blake2s_init(hash: *mut *mut ::std::os::raw::c_void, kk: u32, nn: u32);
+    pub fn Hacl_Blake2s_128_blake2s_init(hash: *mut *mut ::core::ffi::c_void, kk: u32, nn: u32);
 }
 extern "C" {
     pub fn Hacl_Blake2s_128_blake2s_update_key(
-        wv: *mut *mut ::std::os::raw::c_void,
-        hash: *mut *mut ::std::os::raw::c_void,
+        wv: *mut *mut ::core::ffi::c_void,
+        hash: *mut *mut ::core::ffi::c_void,
         kk: u32,
         k: *mut u8,
         ll: u32,
@@ -1036,8 +1036,8 @@ extern "C" {
 extern "C" {
     pub fn Hacl_Blake2s_128_blake2s_update_multi(
         len: u32,
-        wv: *mut *mut ::std::os::raw::c_void,
-        hash: *mut *mut ::std::os::raw::c_void,
+        wv: *mut *mut ::core::ffi::c_void,
+        hash: *mut *mut ::core::ffi::c_void,
         prev: u64,
         blocks: *mut u8,
         nb: u32,
@@ -1046,15 +1046,15 @@ extern "C" {
 extern "C" {
     pub fn Hacl_Blake2s_128_blake2s_update_last(
         len: u32,
-        wv: *mut *mut ::std::os::raw::c_void,
-        hash: *mut *mut ::std::os::raw::c_void,
+        wv: *mut *mut ::core::ffi::c_void,
+        hash: *mut *mut ::core::ffi::c_void,
         prev: u64,
         rem: u32,
         d: *mut u8,
     );
 }
 extern "C" {
-    pub fn Hacl_Blake2s_128_blake2s_finish(nn: u32, output: *mut u8, hash: *mut *mut ::std::os::raw::c_void);
+    pub fn Hacl_Blake2s_128_blake2s_finish(nn: u32, output: *mut u8, hash: *mut *mut ::core::ffi::c_void);
 }
 extern "C" {
     pub fn Hacl_Blake2s_128_blake2s(nn: u32, output: *mut u8, ll: u32, d: *mut u8, kk: u32, k: *mut u8);
@@ -1062,8 +1062,8 @@ extern "C" {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct Hacl_Streaming_Blake2s_128_blake2s_128_block_state_s {
-    pub fst: *mut *mut ::std::os::raw::c_void,
-    pub snd: *mut *mut ::std::os::raw::c_void,
+    pub fst: *mut *mut ::core::ffi::c_void,
+    pub snd: *mut *mut ::core::ffi::c_void,
 }
 pub type Hacl_Streaming_Blake2s_128_blake2s_128_block_state = Hacl_Streaming_Blake2s_128_blake2s_128_block_state_s;
 #[repr(C)]
@@ -1114,7 +1114,7 @@ extern "C" {
 }
 pub type EverCrypt_Hash_broken_alg = Spec_Hash_Definitions_hash_alg;
 pub type EverCrypt_Hash_alg13 = Spec_Hash_Definitions_hash_alg;
-pub type EverCrypt_Hash_e_alg = *mut ::std::os::raw::c_void;
+pub type EverCrypt_Hash_e_alg = *mut ::core::ffi::c_void;
 pub type EverCrypt_Hash_state_s_tags = u8;
 #[repr(C)]
 #[derive(Copy, Clone)]
@@ -1863,19 +1863,19 @@ extern "C" {
     pub fn Hacl_Streaming_MD5_legacy_free_md5(s: *mut Hacl_Streaming_SHA2_state_sha2_224);
 }
 extern "C" {
-    pub fn Hacl_Blake2b_256_blake2b_init(hash: *mut *mut ::std::os::raw::c_void, kk: u32, nn: u32);
+    pub fn Hacl_Blake2b_256_blake2b_init(hash: *mut *mut ::core::ffi::c_void, kk: u32, nn: u32);
 }
 extern "C" {
     pub fn Hacl_Blake2b_256_blake2b_update_key(
-        wv: *mut *mut ::std::os::raw::c_void,
-        hash: *mut *mut ::std::os::raw::c_void,
+        wv: *mut *mut ::core::ffi::c_void,
+        hash: *mut *mut ::core::ffi::c_void,
         kk: u32,
         k: *mut u8,
         ll: u32,
     );
 }
 extern "C" {
-    pub fn Hacl_Blake2b_256_blake2b_finish(nn: u32, output: *mut u8, hash: *mut *mut ::std::os::raw::c_void);
+    pub fn Hacl_Blake2b_256_blake2b_finish(nn: u32, output: *mut u8, hash: *mut *mut ::core::ffi::c_void);
 }
 extern "C" {
     pub fn Hacl_Blake2b_256_blake2b(nn: u32, output: *mut u8, ll: u32, d: *mut u8, kk: u32, k: *mut u8);
@@ -1883,8 +1883,8 @@ extern "C" {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct Hacl_Streaming_Blake2b_256_blake2b_256_block_state_s {
-    pub fst: *mut *mut ::std::os::raw::c_void,
-    pub snd: *mut *mut ::std::os::raw::c_void,
+    pub fst: *mut *mut ::core::ffi::c_void,
+    pub snd: *mut *mut ::core::ffi::c_void,
 }
 pub type Hacl_Streaming_Blake2b_256_blake2b_256_block_state = Hacl_Streaming_Blake2b_256_blake2b_256_block_state_s;
 #[repr(C)]
@@ -2012,7 +2012,7 @@ extern "C" {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct Hacl_Streaming_Poly1305_128_poly1305_128_state_s {
-    pub block_state: *mut *mut ::std::os::raw::c_void,
+    pub block_state: *mut *mut ::core::ffi::c_void,
     pub buf: *mut u8,
     pub total_len: u64,
     pub p_key: *mut u8,
@@ -2853,7 +2853,7 @@ extern "C" {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct Hacl_Streaming_Poly1305_256_poly1305_256_state_s {
-    pub block_state: *mut *mut ::std::os::raw::c_void,
+    pub block_state: *mut *mut ::core::ffi::c_void,
     pub buf: *mut u8,
     pub total_len: u64,
     pub p_key: *mut u8,
@@ -3058,7 +3058,7 @@ pub type EverCrypt_CTR_uint8 = u8;
 extern "C" {
     pub fn EverCrypt_CTR_xor8(a: u8, b: u8) -> u8;
 }
-pub type EverCrypt_CTR_e_alg = *mut ::std::os::raw::c_void;
+pub type EverCrypt_CTR_e_alg = *mut ::core::ffi::c_void;
 extern "C" {
     pub fn EverCrypt_CTR_alg_of_state(s: *mut EverCrypt_CTR_state_s) -> Spec_Agile_Cipher_cipher_alg;
 }
